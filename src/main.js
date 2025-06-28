@@ -39,43 +39,49 @@ analyzeBtn.addEventListener('click', () => {
     cautionSection.innerHTML = '';
     return;
   }
-  // 더 자세한 레시피 예시 표시
-  resultSection.innerHTML = `
-    <h3>AI가 분석한 레시피</h3>
-    <strong>재료</strong>
-    <ul>
-      <li>강력분 300g</li>
-      <li>설탕 40g</li>
-      <li>소금 6g</li>
-      <li>드라이이스트 5g</li>
-      <li>우유 180ml</li>
-      <li>버터 30g</li>
-      <li>달걀 1개</li>
-    </ul>
-    <strong>과정</strong>
-    <ol>
-      <li>강력분, 설탕, 소금, 이스트를 볼에 넣고 섞는다.</li>
-      <li>우유와 달걀을 넣고 반죽한다.</li>
-      <li>버터를 넣고 10분간 치대어 반죽을 완성한다.</li>
-      <li>1차 발효(40분) 후, 가스를 빼고 성형한다.</li>
-      <li>2차 발효(30분) 후, 180℃로 예열한 오븐에 20분간 굽는다.</li>
-    </ol>
-    <strong>예상 소요 시간</strong>: 1시간 40분<br />
-    <strong>난이도</strong>: 중<br />
-    <strong>팁</strong>: 반죽 온도는 26~28℃를 유지하세요.<br />
-    <div style="color:#8033cc; font-size:18px; margin-top:8px;">(실제 AI 분석 결과는 추후 연동 예정)</div>
-  `;
-  cautionSection.innerHTML = `
-    <div class="caution-box">
-      <h4>⚠️ 주의해야 할 점</h4>
+  // 로딩 메시지 표시
+  resultSection.innerHTML = `<div style='color:#8033cc; font-size:22px; font-weight:500;'>해당 영상에서 레시피를 추출 중...</div>`;
+  cautionSection.innerHTML = '';
+  setTimeout(() => {
+    // 실제 레시피 추출 결과 예시 표시
+    resultSection.innerHTML = `
+      <h3>유튜브 영상에서 추출한 레시피</h3>
+      <div style='font-size:15px; color:#888; margin-bottom:8px;'>분석한 영상: <a href='${url}' target='_blank' style='color:#8033cc; text-decoration:underline;'>${url}</a></div>
+      <strong>재료</strong>
       <ul>
-        <li>반죽 온도를 일정하게 유지하세요.</li>
-        <li>발효 시간을 꼭 지키세요.</li>
-        <li>오븐 예열을 충분히 하세요.</li>
-        <li>재료 계량을 정확히 하세요.</li>
+        <li>강력분 300g</li>
+        <li>설탕 40g</li>
+        <li>소금 6g</li>
+        <li>드라이이스트 5g</li>
+        <li>우유 180ml</li>
+        <li>버터 30g</li>
+        <li>달걀 1개</li>
       </ul>
-    </div>
-  `;
+      <strong>과정</strong>
+      <ol>
+        <li>강력분, 설탕, 소금, 이스트를 볼에 넣고 섞는다.</li>
+        <li>우유와 달걀을 넣고 반죽한다.</li>
+        <li>버터를 넣고 10분간 치대어 반죽을 완성한다.</li>
+        <li>1차 발효(40분) 후, 가스를 빼고 성형한다.</li>
+        <li>2차 발효(30분) 후, 180℃로 예열한 오븐에 20분간 굽는다.</li>
+      </ol>
+      <strong>예상 소요 시간</strong>: 1시간 40분<br />
+      <strong>난이도</strong>: 중<br />
+      <strong>팁</strong>: 반죽 온도는 26~28℃를 유지하세요.<br />
+      <div style="color:#8033cc; font-size:18px; margin-top:8px;">(실제 AI 분석 결과는 추후 연동 예정)</div>
+    `;
+    cautionSection.innerHTML = `
+      <div class="caution-box">
+        <h4>⚠️ 주의해야 할 점</h4>
+        <ul>
+          <li>반죽 온도를 일정하게 유지하세요.</li>
+          <li>발효 시간을 꼭 지키세요.</li>
+          <li>오븐 예열을 충분히 하세요.</li>
+          <li>재료 계량을 정확히 하세요.</li>
+        </ul>
+      </div>
+    `;
+  }, 1500);
 });
 
 // AI 채팅 상담 기능
